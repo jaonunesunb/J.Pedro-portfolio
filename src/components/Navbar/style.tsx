@@ -23,6 +23,7 @@ export const Navbar = styled("nav", {
 
 export const LogoTipo = styled(Flex, {
   alignItems: "center",
+  gap: "0.75rem",
 });
 
 export const LogoTipoImage = styled("img", {

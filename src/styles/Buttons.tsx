@@ -17,7 +17,7 @@ export const Button = styled('button', {
     justifyContent: "center",
     alignItems: "center",
     width: "max-content",
-
+   
     variants: {
         type: {
             btLink: {
@@ -33,9 +33,19 @@ export const Button = styled('button', {
                     borderColor: "$brand2",
                 }
             },
+            secondary: {
+                background: "$brand2",
+                borderColor: "$brand2",
+                color: "$whiteFixed",
+                "&:hover": {
+                    backgroundColor: "$brand3",
+                    borderColor: "$brand3",
+                }
+            },
             icon: {
                 borderColor: "$grey5",
                 backgroundColor: "transparent",
+                borderRadius: "$1",
                 "&:hover": {
                     backgroundColor: "$grey5",
                 }

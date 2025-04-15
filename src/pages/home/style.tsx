@@ -6,7 +6,7 @@ import img from "@/public/static/img/background/dots.svg";
 
 export const Header = styled("header", {
   backgroundColor: "$brand1",
-  padding: "12rem 0 8rem 0",
+  padding: "6rem 0 4rem 0",
   backgroundImage: `url(${img})`,
   backgroundRepeat: "no-repeat",
   backgroundPosition: "bottom 1rem right 1rem",
@@ -54,6 +54,7 @@ export const StackCards = styled("div", {
 
 export const ProjectsArea = styled("section", {
   padding: "4rem 0 8rem 0",
+  background: "$mode",
 });
 
 export const ProjectsAreaSocialMediaMessage = styled("aside", {

@@ -1,13 +1,14 @@
-import { useLanguage } from "contexts/LanguageContext";
+import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from '@/styles/Buttons'
 
 export const LanguageSelector = () => {
   const { language, setLanguage } = useLanguage();
 
   return (
     <div style={{ display: "flex", gap: "1rem" }}>
-      <button disabled={language === "en"} onClick={() => setLanguage("en")}>EN</button>
-      <button disabled={language === "pt"} onClick={() => setLanguage("pt")}>PT</button>
-      <button disabled={language === "es"} onClick={() => setLanguage("es")}>ES</button>
+      <Button disabled={language === "en"} onClick={() => setLanguage("en")}>EN</Button>
+      <Button disabled={language === "pt"} onClick={() => setLanguage("pt")}>PT</Button>
+      <Button disabled={language === "es"} onClick={() => setLanguage("es")}>ES</Button>
     </div>
   );
 };

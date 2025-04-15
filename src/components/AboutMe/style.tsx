@@ -1,87 +1,127 @@
-import { Flex } from "@/styles/Global";
 import { styled } from "@/styles/stitches.config";
+import { Flex, Container } from "@/styles/Global";
+import { Button } from "@/styles/Buttons";
+import img from "@/public/static/img/background/dots.svg";
 
-export const AboutMeSection = styled("section", {
+/* ====================
+   Header Section
+==================== */
+export const Header = styled("header", {
+  backgroundColor: "$brand1",
+  padding: "6rem 0 4rem 0",
+  backgroundImage: `url(${img})`,
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "bottom right",
+  "@mobile": {
+    padding: "6rem 0 3rem 0",
+  },
+});
+
+export const HeaderContent = styled("div", {
+  maxWidth: "100%",
+  width: "36rem",
   display: "flex",
   flexDirection: "column",
-  background: "$grey1",
-  width: "100%",
-  marginTop: "30px",
+  gap: "$2",
+});
+
+export const HeaderButtonsArea = styled(Flex, {
+  marginTop: "$2",
   "@mobile": {
-    padding: "$sectionMobile 0",
+    flexDirection: "column",
+    [`& ${Button}`]: {
+      width: "100%",
+    },
+  },
+});
+
+/* ====================
+   About Me Section
+==================== */
+export const AboutMeSection = styled("section", {
+  padding: "2rem 0",
+  background: "$mode",
+  display: "flex",
+  justifyContent: "center",
+  width: "100%",
+  "@mobile": {
+    padding: "1.5rem 0",
   },
 });
 
 export const AboutMeSectionContent = styled("div", {
+  width: "100%",
+  maxWidth: "90%",
   display: "flex",
   flexDirection: "column",
-  justifyContent: "space-between",
+  alignItems: "flex-start",
+  textAlign: "left",
+  gap: "1rem",             
+  margin: "0 auto",
+});
+
+
+export const AboutMeTextContainer = styled("div", {
+  maxWidth: "75rem",
   width: "100%",
+  lineHeight: "1.6rem",
+  textAlign: "justify",
+});
+
+/* ====================
+   Stack Section
+==================== */
+export const StackSection = styled("section", {
+  backgroundColor: "$grey4",
+  padding: "3rem 0",
+});
+
+export const StackCards = styled("div", {
+  display: "grid",
+  gridTemplateColumns: "repeat(auto-fit, minmax(120px, 1fr))",
+  gap: "1.5rem",
+  padding: "2rem 0",
   "@mobile": {
-    flexDirection: "column",
+    display: "flex",
+    overflow: "auto",
+    padding: "1rem 0",
   },
 });
 
-export const ContactSectionText = styled("aside", {
-  maxWidth: "26.25rem",
-  display: "grid",
-  gridGap: "$2",
-  height: "max-content",
+/* ====================
+   Projects Area
+==================== */
+export const ProjectsArea = styled("section", {
+  padding: "3rem 0 6rem 0",
+});
+
+export const ProjectsAreaSocialMediaMessage = styled("aside", {
+  width: "32%",
+  display: "flex",
+  flexDirection: "column",
+  gap: "1.5rem",
   position: "sticky",
   top: "8rem",
   "@mobile": {
+    width: "100%",
     position: "static",
-    marginBottom: "$5",
+    order: "2",
+    marginTop: "3rem",
   },
 });
 
-export const ContactsCards = styled("div", {
-  display: "flex",
-  flexDirection: "column",
-  width: "50%",
+export const ProjectsAreaContent = styled("div", {
+  width: "60%",
+  paddingLeft: "2rem",
   "@mobile": {
     width: "100%",
+    paddingLeft: "0",
   },
 });
 
-export const ContactCard = styled("div", {
-  width: "100%",
-  display: "flex",
-  paddingRight: "10rem",
-  marginBottom: "6rem",
-  ["& a"]: {
-    "&:hover": {
-      color: "$grey4",
-      cursor: "pointer",
-    },
-  },
+export const ProjectAreaWrapperColumns = styled(Flex, {
+  alignItems: "flex-start",
   "@mobile": {
-    paddingRight: "0",
+    flexDirection: "column",
   },
-});
-
-export const ContactCardImage = styled("div", {
-  minWidth: "4.5rem",
-  height: "4.5rem",
-  marginRight: "$2",
-  borderRadius: "$1",
-  backgroundColor: "$grey0",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-
-  ["&.wpp"]: {
-    background: "linear-gradient(180deg, #50C571 0%, #50CF9A 100%)",
-  },
-  ["&.email"]: {
-    background: "linear-gradient(180deg, #BD3B9B 0%, #EE5BC7 100%)",
-  },
-  ["&.linkedin"]: {
-    background: "linear-gradient(180deg, #4E73FF 0%, #506CCF 100%)",
-  },
-});
-
-export const ContactCardContent = styled("div", {
-  display: "grid",
-  gridGap: "$2",
 });

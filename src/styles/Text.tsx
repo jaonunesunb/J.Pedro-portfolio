@@ -1,6 +1,15 @@
 import { styled } from '@/styles/stitches.config';
 import { colors } from '@/styles/Global'
 
+import { CSS } from "@stitches/react"; 
+
+export interface TextProps {
+  as?: keyof JSX.IntrinsicElements; // Permite definir a tag HTML (por exemplo, 'h1', 'p')
+  type?: "heading1" | "heading2" | "heading3" | "heading4" | "body1" | "body2"; // Para definir o tipo de texto
+  color?: string; // Para definir a cor do texto
+  css?: CSS; // Para aplicar estilos personalizados, se necessário
+}
+
 const headingsDefaultConfig = {
     fontFamily: "$titles"
 }

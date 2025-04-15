@@ -15,11 +15,36 @@ import { FaGithub, FaLinkedinIn, FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { Button } from "@/styles/Buttons";
 import { Container } from "@/styles/Global";
+import { useTheme } from "@/contexts/ThemeContext";
 
 export interface MenuButtonOpen {
   open: Boolean;
   setOpen: (value: Boolean) => void;
 }
+
+import { falar } from "@/contents/aboutMeText";
+import { useLanguage } from "@/contexts/LanguageContext";
+
+// Tipo de tradução
+type Translation = {
+  en: string;
+  pt: string;
+  es: string;
+};
+
+type Texts = {
+  falar: Translation;
+};
+
+ const getText = (key: keyof Texts) => {
+  const { language } = useLanguage();
+    const texts: Texts = {
+      falar
+    };
+     // Acessando o texto correto
+     const result = texts[key];
+     return result ? result[language] : "";
+   };
 
 export const NavBar = (): JSX.Element => {
   const isWide = useMedia({ maxWidth: "991px" });
@@ -63,6 +88,8 @@ export const NavBar = (): JSX.Element => {
 };
 
 export const NavLinks = (): JSX.Element => {
+  const { theme, toggleTheme } = useTheme();
+
   return (
     <NavbarLinks>
       {userData.whatsappNumber && (
@@ -72,7 +99,7 @@ export const NavLinks = (): JSX.Element => {
           target="_blank"
           href={`https://api.whatsapp.com/send?phone=+55${userData.whatsappNumber}&text=Ol%C3%A1%2C%20venho%20por%20meio%20do%20seu%20portf%C3%B3lio%20na%20internet%2C%20gostaria%20de%20conhecer%20melhor%20seus%20servi%C3%A7os`}
         >
-          Falar no whatsapp
+          {getText("falar")}
         </Button>
       )}
 
@@ -99,6 +126,13 @@ export const NavLinks = (): JSX.Element => {
           <FaLinkedinIn />
         </Button>
       )}
+      <Button
+        type="icon"
+        onClick={toggleTheme}
+        aria-label="Alternar tema"
+      >
+        {theme === "light" ? "🌙" : "☀️"}
+      </Button>
     </NavbarLinks>
   );
 };

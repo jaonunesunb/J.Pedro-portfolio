@@ -47,6 +47,30 @@ export const colors = {
   },
 };
 
+export const darkTheme = createTheme({
+  colors: {
+    // Tons principais - mais escuros, profundos e sóbrios
+    brand1: "#1E88E5", // azul escuro
+    brand2: "#42A5F5", // azul mais claro
+    brand3: "#81D4FA", // azul suave
+    brand4: "#BBDEFB", // quase pastel de azul
+    
+    // Cores para textos e elementos de apoio
+    grey1: "#F8F9FA", // texto principal bem claro
+    grey2: "#CED3D7", // cinza suave
+    grey3: "#495057", // cinza escuro
+    grey4: "#343A40", // cinza bem escuro
+    grey5: "#212529", // cinza muito escuro, quase preto
+    grey6: "#121416", // preto suave
+    
+    whiteFixed: "#0F0F0F", // quase preto para textos e backgrounds
+    
+    // Token para o background principal (modo noturno)
+    mode: "#1E1E2F", // fundo escuro e suave
+  },
+});
+
+
 export const globalStyles = globalCss({
   "*": {
     margin: 0,
@@ -57,73 +81,18 @@ export const globalStyles = globalCss({
   html: {
     scrollBehavior: "smooth",
   },
-  a: { textDecoration: "none" },
+  a: {
+    textDecoration: "none",
+  },
 });
 
 export const GlobalStyle: React.FC<GlobalStyleProps> = ({ children }) => {
-  const theme = createTheme({
-    colors: {
-      brand1: "#5C63ED",
-      brand2: "#7D82F1",
-      brand3: "#BEC1F8",
-      brand4: "#E7E8FC",
-      grey1: "#212529",
-      grey2: "#495057",
-      grey3: "#CED3D7",
-      grey4: "#F1F3F5",
-      grey5: "#F8F9FA",
-      grey6: "#DEE0FB",
-      whiteFixed: "#ffffff",
-      mode: "#ffffff",
-    },
-    sizes: {
-      container: "75rem",
-    },
-    space: {
-      1: "0.5rem",
-      2: "1rem",
-      3: "2rem",
-    },
-    fonts: {
-      titles: '"Lexend", sans-serif;',
-      texts: '"Inter", sans-serif',
-    },
-    fontSizes: {
-      title1: "2.75rem",
-      title2: "1.75rem",
-      title3: "1.50rem",
-      title4: "1.25rem",
-      text1: "1rem",
-      text2: "0.875rem",
-
-      // Mobile
-      title1Mobile: "$title2",
-      title2Mobile: "$title3",
-    },
-    lineHeights: {
-      title1: "3.8rem",
-      title2: "2.75rem",
-      title3: "2.5rem",
-      title4: "1.25rem",
-      text1: "1.75rem",
-      text2: "1.75rem",
-
-      // Mobile
-      title1Mobile: "$title2",
-      title2Mobile: "$title3",
-    },
-
-    radii: {
-      1: "0.5rem",
-      2: "0.25rem",
-    },
-  });
-
   globalStyles();
 
+  // Apenas cria um container que envolve a aplicação; não atribuímos nenhuma className aqui.
   const App = styled("div", {
     minHeight: "100vh",
   });
 
-  return <App className={theme}>{children}</App>;
+  return <App>{children}</App>;
 };

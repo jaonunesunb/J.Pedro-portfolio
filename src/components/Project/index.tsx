@@ -11,6 +11,10 @@ import { useEffect, useState } from "react";
 import { FaGithub, FaShare } from "react-icons/fa";
 import { userData } from "@/utils/userData";
 
+// Importando os textos
+import { linguagem, aplicacao, code } from "@/contents/aboutMeText";
+import { useLanguage } from "@/contexts/LanguageContext";
+
 interface ReposType {
   id: number;
   name: string;
@@ -19,6 +23,31 @@ interface ReposType {
   git_url: string;
   homepage: string;
 }
+
+// Tipo de tradução
+type Translation = {
+  en: string;
+  pt: string;
+  es: string;
+};
+
+type Texts = {
+  linguagem: Translation;
+  aplicacao: Translation,
+  code: Translation
+};
+
+ const getText = (key: keyof Texts) => {
+  const { language } = useLanguage();
+    const texts: Texts = {
+      linguagem,
+      aplicacao,
+      code,
+    };
+     // Acessando o texto correto
+     const result = texts[key];
+     return result ? result[language] : "";
+   };
 
 export const Project = (): JSX.Element => {
   const [repositories, setRepositories] = useState<ReposType[]>([]);
@@ -57,7 +86,7 @@ export const Project = (): JSX.Element => {
 
           {repository.language && (
             <ProjectStack>
-              <Text type="body2">Linguagem:</Text>
+              <Text type="body2">{getText("linguagem")}:</Text>
               <ProjectStackTech>
                 <Text color="brand1" type="body2">
                   {repository.language}
@@ -71,11 +100,11 @@ export const Project = (): JSX.Element => {
           </Text>
           <ProjectLinks>
             <ProjectLink target="_blank" href={repository.git_url}>
-              <FaGithub /> Github Code
+              <FaGithub /> {getText("code")}
             </ProjectLink>
             {repository.homepage && (
               <ProjectLink target="_blank" href={repository.homepage}>
-                <FaShare /> Aplicação
+                <FaShare /> {getText("aplicacao")}
               </ProjectLink>
             )}
           </ProjectLinks>

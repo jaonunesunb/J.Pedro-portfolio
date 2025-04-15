@@ -1,4 +1,3 @@
-// src/contents/aboutMeText.ts
 
 export const aboutMeText = {
     en: `I am a Full-stack Developer and Master's student in Computer Science at the Federal University of Uberlândia (UFU), specializing in Data Science. 
@@ -35,3 +34,86 @@ export const aboutMeText = {
   Si deseas contactarme o saber más, puedes escribirme a jaonunesunb@gmail.com o a través de mis redes sociales abajo.`
   };
   
+  export const aboutMeTitles = {
+    en: "A little bit about me",
+    pt: "Um pouco sobre mim",
+    es: "Un poco sobre mí",
+  };
+  
+   export const projectsTitle = {
+    en: "Projects",
+    pt: "Projetos",
+    es: "Proyectos",
+  };
+
+  export const technologiesTitle = {
+    en: "Technologies",
+    pt: "Tecnologias",
+    es: "Tecnologías",
+  };
+
+  export const linguagem = {
+    en: "Language",
+    pt: "Linguagem",
+    es: "Linguaje",
+  };
+
+  export const linkedin = {
+    en: "On LinkedIn I am always sharing my daily processes to develop these projects and I am willing to exchange some ideas there.",
+    pt: " No linkedIn sempre estou compartilhando meus processos diários para desenvolver esses projetos e estou disposto a trocar algumas ideias por lá",
+    es: "En LinkedIn siempre estoy compartiendo mis procesos diarios para desarrollar estos proyectos y estoy dispuesto a intercambiar algunas ideas ahí"
+  }
+
+  export const accessLinkedIn = {
+    en: "Access LinkedIn profile",
+    pt: "Acessar perfil no LinkedIn",
+    es: "Acceder al perfil de LinkedIn",
+  }
+
+  export const originality = {
+    en: "originality and ",
+    pt: "Originalidade e ",
+    es: "Originalidad y ",
+  }
+
+  export const dominio = {
+    pt: "Ferramentas que domino",
+    en: "Developing tools that I've mastered",
+    es:"Herramientas que domino"
+  }
+
+  export const cada_detalhe = {
+    en: " in every detail",
+    pt: " em cada detalhe",
+    es: " en cada detalle.",
+  }
+  
+  export const dedicacao = {
+    pt: "dedicação",
+    en: "dedication",
+    es: "dedicación"
+  }
+
+  export const trocar_ideia = {
+    pt: "Vamos trocar uma ideia?",
+    es: "¿Intercambiemos ideas?",
+    en: "Let's exchange ideas?"
+  }
+
+  export const aplicacao = {
+    en: "Application deploy",
+    pt: "Aplicação",
+    es: "Implementación de aplicaciones"
+  }
+
+  export const code = {
+    en: "Github Code",
+    pt: "Código no Github",
+    es: "Código en github"
+  }
+
+  export const falar = {
+    pt: "Falar no whatsapp",
+    en: "Speak on WhatsApp",
+    es: "Hablar por WhatsApp"
+  }
