@@ -41,6 +41,7 @@ import {
    trocar_ideia
 
  } from "@/contents/aboutMeText";
+import Carousel from "@/components/Carrossel";
 
 // Tipo de tradução
 type Translation = {
@@ -122,6 +123,7 @@ export const Home = (): JSX.Element => {
             </StackCards>
           </Container>
         </StackSection>
+        {/* <Carousel /> */}
         <ProjectsArea id="projetos">
           <Container>
             <ProjectAreaWrapperColumns>
