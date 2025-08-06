@@ -8,7 +8,7 @@ import img from "@/public/static/img/background/dots.svg";
 ==================== */
 export const Header = styled("header", {
   backgroundColor: "$brand1",
-  padding: "6rem 0 4rem 0",
+  padding: "3rem 0 4rem 0",
   backgroundImage: `url(${img})`,
   backgroundRepeat: "no-repeat",
   backgroundPosition: "bottom right",

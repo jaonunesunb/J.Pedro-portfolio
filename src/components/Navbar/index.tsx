@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { FaGithub, FaLinkedinIn, FaBars } from "react-icons/fa";
+import { FaGithub, FaLinkedinIn, FaBars, FaEnvelope } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { Button } from "@/styles/Buttons";
 import { Container } from "@/styles/Global";
@@ -97,7 +97,19 @@ export const NavBar = (): JSX.Element => {
               <FaLinkedinIn />
             </Button>
           )}
-
+ 
+          {userData.gmail && (
+            <Button
+              type="icon"
+              as="a"
+              href={`https://mail.google.com/mail/?view=cm&to=${userData.gmail}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Gmail"
+            >
+              <FaEnvelope />
+            </Button>
+          )}
           <Button type="icon" onClick={toggleTheme} aria-label="Alternar tema">
             {theme === "light" ? "🌙" : "☀️"}
           </Button>

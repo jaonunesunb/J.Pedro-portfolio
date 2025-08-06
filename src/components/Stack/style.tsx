@@ -11,12 +11,14 @@ export const StackCard = styled("div", {
   minWidth: "10.25rem",
   maxWidth: "10.25rem",
   borderRadius: "$1",
-  padding: "1rem",
+  padding: "0.5rem",
   background: "$whiteFixed",
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
   position: "relative",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  transition: "transform 0.2s, box-shadow 0.2s",
 
   [`& ${Text}`]: {
     opacity: 0,
@@ -47,6 +49,8 @@ export const StackCard = styled("div", {
   },
 
   "&:hover": {
+    transform: "translateY(-4px)",
+    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
     [`& ${Text}`]: {
       opacity: 1,
       top: 0,

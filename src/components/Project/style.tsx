@@ -3,7 +3,14 @@ import { Flex } from "../../styles/Global";
 import { Button } from "../../styles/Buttons";
 
 export const Project = styled("article", {
-  marginTop: "4rem",
+  marginTop: "3rem",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.1)",
+  transition: "transform 0.2s, box-shadow 0.2s",
+
+  "&:hover": {
+    transform: "translateY(-4px)",
+    boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
+  },
 });
 
 export const ProjectStack = styled(Flex, {

@@ -6,8 +6,8 @@ export const NavbarWrapper = styled("nav", {
   background: "$mode",
   borderBottom: "2px solid $grey4",
   position: "fixed",
-  inset: 0,
-  bottom: "auto",
+  left: 0,
+  right: 0,
   padding: "1rem 0",
   width: "100%",
   zIndex: "99999",
@@ -18,6 +18,9 @@ export const NavbarWrapper = styled("nav", {
     "@mobile": {
       flexDirection: "column",
     },
+  },
+  "@mobile": {
+    position: "sticky",
   },
 });
 
