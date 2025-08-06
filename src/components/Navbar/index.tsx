@@ -1,31 +1,23 @@
-import { useState } from "react";
-import useMedia from "use-media";
-import { userData } from "@/utils/userData";
-
-import {
-  Navbar as NavbarWrapper,
-  LogoTipo,
-  LogoTipoImage,
-  LogoTipoText,
-  NavbarLinks,
-  NavbarMobileArea,
-} from "./style";
-
+import React, { useEffect, useState } from "react";
 import { FaGithub, FaLinkedinIn, FaBars } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 import { Button } from "@/styles/Buttons";
 import { Container } from "@/styles/Global";
 import { useTheme } from "@/contexts/ThemeContext";
-
-export interface MenuButtonOpen {
-  open: Boolean;
-  setOpen: (value: Boolean) => void;
-}
-
-import { falar } from "@/contents/aboutMeText";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { falar } from "@/contents/aboutMeText";
+import { theme } from "@/styles/stitches.config";
+import useMedia from "use-media";
+import {
+  NavbarWrapper,
+  NavbarMobileArea,
+  LogoTipo,
+  LogoTipoImage,
+  NavbarLinks,
+} from "./style";
+import { userData } from "@/utils/userData";
 
-// Tipo de tradução
+// Tipos de tradução
 type Translation = {
   en: string;
   pt: string;
@@ -36,25 +28,25 @@ type Texts = {
   falar: Translation;
 };
 
- const getText = (key: keyof Texts) => {
-  const { language } = useLanguage();
-    const texts: Texts = {
-      falar
-    };
-     // Acessando o texto correto
-     const result = texts[key];
-     return result ? result[language] : "";
-   };
-
 export const NavBar = (): JSX.Element => {
+  const [open, setOpen] = useState(false);
+  const { language } = useLanguage();
+  const { theme, toggleTheme } = useTheme(); // supondo que toggleTheme está no seu contexto
   const isWide = useMedia({ maxWidth: "991px" });
 
-  document.title = userData.nameUser;
+  const getText = (key: keyof Texts) => {
+    const texts: Texts = {
+      falar,
+    };
+    return texts[key]?.[language] || "";
+  };
 
-  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    document.title = userData.nameUser;
+  }, []);
 
-  const OpenMenu = () => {
-    setOpen(!open);
+  const handleMenuToggle = () => {
+    setOpen((prev) => !prev);
   };
 
   return (
@@ -66,73 +58,51 @@ export const NavBar = (): JSX.Element => {
               src={`https://github.com/${userData.githubUser}.png`}
               alt={userData.nameUser}
               title={userData.nameUser}
-              width={"48px"}
-              height={"48px"}
+              width="48px"
+              height="48px"
             />
-            <LogoTipoText>{userData.nameUser}</LogoTipoText>
+            <h1>{userData.nameUser}</h1>
           </LogoTipo>
+
           {isWide && (
-            <Button
-              type="icon"
-              onClick={OpenMenu}
-              aria-label={!open ? "Abrir Menu" : "Fechar Menu"}
-            >
-              {!open ? <FaBars /> : <IoClose />}
+            <Button type="icon" onClick={handleMenuToggle} aria-label="Menu">
+              {open ? <IoClose /> : <FaBars />}
             </Button>
           )}
         </NavbarMobileArea>
-        {isWide ? open && <NavLinks /> : <NavLinks />}
+
+        <NavbarLinks>
+          {userData.githubUser && (
+            <Button
+              type="icon"
+              as="a"
+              href={`https://github.com/${userData.githubUser}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+            >
+              <FaGithub />
+            </Button>
+          )}
+
+          {userData.linkedinUser && (
+            <Button
+              type="icon"
+              as="a"
+              href={`https://www.linkedin.com/in/${userData.linkedinUser}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="LinkedIn"
+            >
+              <FaLinkedinIn />
+            </Button>
+          )}
+
+          <Button type="icon" onClick={toggleTheme} aria-label="Alternar tema">
+            {theme === "light" ? "🌙" : "☀️"}
+          </Button>
+        </NavbarLinks>
       </Container>
     </NavbarWrapper>
-  );
-};
-
-export const NavLinks = (): JSX.Element => {
-  const { theme, toggleTheme } = useTheme();
-
-  return (
-    <NavbarLinks>
-      {userData.whatsappNumber && (
-        <Button
-          type="primary"
-          as="a"
-          target="_blank"
-          href={`https://api.whatsapp.com/send?phone=+55${userData.whatsappNumber}&text=Ol%C3%A1%2C%20venho%20por%20meio%20do%20seu%20portf%C3%B3lio%20na%20internet%2C%20gostaria%20de%20conhecer%20melhor%20seus%20servi%C3%A7os`}
-        >
-          {getText("falar")}
-        </Button>
-      )}
-
-      {userData.githubUser && (
-        <Button
-          type="icon"
-          target="_blank"
-          as="a"
-          aria-label="Github"
-          href={`https://github.com/${userData.githubUser}`}
-        >
-          <FaGithub />
-        </Button>
-      )}
-
-      {userData.linkedinUser && (
-        <Button
-          type="icon"
-          target="_blank"
-          as="a"
-          aria-label="LinkedIn"
-          href={`https://www.linkedin.com/in/${userData.linkedinUser}`}
-        >
-          <FaLinkedinIn />
-        </Button>
-      )}
-      <Button
-        type="icon"
-        onClick={toggleTheme}
-        aria-label="Alternar tema"
-      >
-        {theme === "light" ? "🌙" : "☀️"}
-      </Button>
-    </NavbarLinks>
   );
 };

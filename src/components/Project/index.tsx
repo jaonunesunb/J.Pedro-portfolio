@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import {
   Project as ProjectWrapper,
   ProjectStack,
@@ -7,7 +8,7 @@ import {
 } from "./style";
 
 import { Text } from "@/styles/Text";
-import { useEffect, useState } from "react";
+
 import { FaGithub, FaShare } from "react-icons/fa";
 import { userData } from "@/utils/userData";
 
@@ -20,7 +21,7 @@ interface ReposType {
   name: string;
   language: string;
   description: string;
-  git_url: string;
+  html_url: string;
   homepage: string;
 }
 
@@ -33,93 +34,93 @@ type Translation = {
 
 type Texts = {
   linguagem: Translation;
-  aplicacao: Translation,
-  code: Translation
+  aplicacao: Translation;
+  code: Translation;
 };
 
- const getText = (key: keyof Texts) => {
+export const Project = (): JSX.Element => {
+  const [repositories, setRepositories] = useState<ReposType[]>([]);
   const { language } = useLanguage();
+
+  const getText = (key: keyof Texts) => {
     const texts: Texts = {
       linguagem,
       aplicacao,
       code,
     };
-     // Acessando o texto correto
-     const result = texts[key];
-     return result ? result[language] : "";
-   };
+    return texts[key]?.[language] || "";
+  };
 
-   export const Project = (): JSX.Element => {
-    const [repositories, setRepositories] = useState<ReposType[]>([]);
-  
-    // Remover o useEffect condicional. Ele deve ser chamado apenas uma vez durante a primeira renderização.
-    const fetchData = async () => {
-      try {
-        const data: Response = await fetch(
-          `https://api.github.com/users/${userData.githubUser}/repos`
-        );
-        const json = await data.json();
-  
-        // Verificar se a resposta foi bem-sucedida antes de atualizar o estado
-        if (data.ok) {
-          setRepositories(json);
-        } else {
-          console.error('Erro ao buscar dados dos repositórios', json);
-        }
-      } catch (error) {
-        console.error('Erro de rede ao buscar dados dos repositórios', error);
+  const fetchData = async () => {
+    try {
+      const response = await fetch(
+        `https://api.github.com/users/${userData.githubUser}/repos`
+      );
+      const json = await response.json();
+
+      if (response.ok) {
+        setRepositories(json);
+      } else {
+        console.error("Erro ao buscar repositórios:", json);
       }
-    };
-  
-    useEffect(() => {
-      fetchData();
-    }, []); // A função fetchData é chamada uma vez quando o componente é montado
-  
-    return (
-      <>
-        {repositories?.map((repository) => (
-          <ProjectWrapper key={repository.id}>
-            <Text
-              as="h2"
-              type="heading3"
-              css={{ marginBottom: "$3" }}
-              color="grey1"
-            >
-              {repository.name}
-            </Text>
-  
-            {repository.language && (
-              <ProjectStack>
-                <Text type="body2">{getText("linguagem")}:</Text>
-                <ProjectStackTech>
-                  <Text color="brand1" type="body2">
-                    {repository.language}
-                  </Text>
-                </ProjectStackTech>
-              </ProjectStack>
-            )}
-  
-            <Text type="body1" color="grey2">
-              {repository.description}
-            </Text>
-            <ProjectLinks>
-            <ProjectLinks>
+    } catch (error) {
+      console.error("Erro de rede:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      {repositories.map((repository) => (
+        <ProjectWrapper key={repository.id}>
+          <Text
+            as="h2"
+            type="heading3"
+            css={{ marginBottom: "$3" }}
+            color="grey1"
+          >
+            {repository.name}
+          </Text>
+
+          {repository.language && (
+            <ProjectStack>
+              <Text type="body2">{getText("linguagem")}:</Text>
+              <ProjectStackTech>
+                <Text color="brand1" type="body2">
+                  {repository.language}
+                </Text>
+              </ProjectStackTech>
+            </ProjectStack>
+          )}
+
+          <Text type="body1" color="grey2">
+            {repository.description}
+          </Text>
+
+          <ProjectLinks>
             <ProjectLink
               target="_blank"
-              href={repository.git_url.replace("git://", "https://")}
+              href={repository.html_url}
               rel="noopener noreferrer"
             >
               <FaGithub /> {getText("code")}
             </ProjectLink>
+
             {repository.homepage && (
-              <ProjectLink target="_blank" href={repository.homepage} rel="noopener noreferrer">
+              <ProjectLink
+                target="_blank"
+                href={repository.homepage}
+                rel="noopener noreferrer"
+              >
                 <FaShare /> {getText("aplicacao")}
               </ProjectLink>
             )}
           </ProjectLinks>
-            </ProjectLinks>
-          </ProjectWrapper>
-        ))}
-      </>
-    );
-  };  
+        </ProjectWrapper>
+      ))}
+    </>
+  );
+};

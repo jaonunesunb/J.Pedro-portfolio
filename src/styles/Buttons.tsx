@@ -17,7 +17,17 @@ export const Button = styled('button', {
     justifyContent: "center",
     alignItems: "center",
     width: "max-content",
-   
+    
+    transition: "background-color 0.3s, color 0.3s, border-color 0.3s",
+        "&:focus-visible": {
+            outline: "2px solid $brand1",
+            outlineOffset: "2px",
+        },
+        "&:disabled": {
+            opacity: 0.6,
+            cursor: "not-allowed",
+        },
+
     variants: {
         type: {
             btLink: {

@@ -2,7 +2,7 @@ import { styled } from "../../styles/stitches.config";
 import { Flex, Container } from "../../styles/Global";
 import { Button } from "../../styles/Buttons";
 
-export const Navbar = styled("nav", {
+export const NavbarWrapper = styled("nav", {
   background: "$mode",
   borderBottom: "2px solid $grey4",
   position: "fixed",
@@ -16,7 +16,7 @@ export const Navbar = styled("nav", {
     display: "flex",
     justifyContent: "space-between",
     "@mobile": {
-        flexDirection: "column"
+      flexDirection: "column",
     },
   },
 });
@@ -33,7 +33,7 @@ export const LogoTipoImage = styled("img", {
   "@mobile": {
     width: "2.25rem",
     height: "2.25rem",
-  }
+  },
 });
 
 export const LogoTipoText = styled("span", {
@@ -43,7 +43,7 @@ export const LogoTipoText = styled("span", {
   fontFamily: '"IBM Plex Sans"',
   "@mobile": {
     fontSize: "1rem",
-  }
+  },
 });
 
 export const NavbarLinks = styled(Flex, {
@@ -63,6 +63,6 @@ export const NavbarLinks = styled(Flex, {
 });
 
 export const NavbarMobileArea = styled("div", {
-   display: "flex",
-   justifyContent: "space-between"
+  display: "flex",
+  justifyContent: "space-between",
 });

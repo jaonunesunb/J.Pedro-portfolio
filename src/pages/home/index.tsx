@@ -104,7 +104,7 @@ export const Home = (): JSX.Element => {
                 <Button as="a" href="#projetos">
                 {getText("projectsTitle")}
                 </Button>
-                <Button as="a" href="#tecnologias" type="btLink" color="grey5">
+                <Button as="a" href="#tecnologias" type="secondary">
                 {getText("technologiesTitle")}
                 </Button>
               </HeaderButtonsArea>
