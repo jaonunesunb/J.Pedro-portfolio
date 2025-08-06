@@ -3,10 +3,10 @@ import { createStitches } from "@stitches/react";
 export const { styled, globalCss, theme, createTheme } = createStitches({
   theme: {
     colors: {
-      brand1: "#4CAF50", // verde escuro
-      brand2: "#81C784", // verde claro
-      brand3: "#A5D6A7", // pastel de verde
-      brand4: "#C8E6C9", // quase um mint suave
+       brand1: "#1976D2", // azul profundo para elementos de destaque
+      brand2: "#64B5F6", // azul suave
+      brand3: "#90CAF9", // azul pastel
+      brand4: "#E3F2FD", // azul bem claro
       
       // Cores para textos e elementos de apoio
       grey1: "#212121", // escuro para textos
@@ -19,7 +19,7 @@ export const { styled, globalCss, theme, createTheme } = createStitches({
       whiteFixed: "#ffffff", // branco puro
       
       // Token para o background principal (modo diurno)
-      mode: "#F1F8E9", // fundo suave em verde claro
+      mode: "#F5F7FA", // fundo neutro em azul muito claro
     },
     sizes: {
       container: "75rem",

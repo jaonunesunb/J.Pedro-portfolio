@@ -50,10 +50,10 @@ export const colors = {
 export const darkTheme = createTheme({
   colors: {
     // Tons principais - mais escuros, profundos e sóbrios
-    brand1: "#1E88E5", // azul escuro
-    brand2: "#42A5F5", // azul mais claro
-    brand3: "#81D4FA", // azul suave
-    brand4: "#BBDEFB", // quase pastel de azul
+    brand1: "#1565C0", // azul bem escuro
+    brand2: "#1976D2", // azul padrão
+    brand3: "#2196F3", // azul claro
+    brand4: "#64B5F6", // azul suave,
     
     // Cores para textos e elementos de apoio
     grey1: "#F8F9FA", // texto principal bem claro
